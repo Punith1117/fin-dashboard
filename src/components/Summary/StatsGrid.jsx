@@ -5,6 +5,8 @@ import { StatCard } from './StatCard';
 import { Wallet, TrendingUp, TrendingDown } from 'lucide-react';
 
 export function StatsGrid() {
+  // Subscribe to transactions to ensure standard reactivity when the list updates
+  const transactions = useTransactionStore((state) => state.transactions);
   const getTotalBalance = useTransactionStore((state) => state.getTotalBalance);
   const getTotalIncome = useTransactionStore((state) => state.getTotalIncome);
   const getTotalExpense = useTransactionStore((state) => state.getTotalExpense);
