@@ -1,4 +1,5 @@
 import { StatsGrid } from './components/Summary/StatsGrid';
+import { TransactionList } from './components/Transactions/TransactionList';
 import './index.css';
 
 function App() {
@@ -9,7 +10,9 @@ function App() {
         
         <StatsGrid />
         
-        {/* Placeholder for the Transactions List and Add Modal */}
+        <TransactionList />
+        
+        {/* Placeholder for the Add Transaction Modal */}
       </div>
     </div>
   );
