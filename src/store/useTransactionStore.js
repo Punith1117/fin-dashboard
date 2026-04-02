@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { useAuthStore } from './useAuthStore';
 
 // Pre-seeded mock transactions
 const initialTransactions = [
@@ -61,15 +62,27 @@ export const useTransactionStore = create((set, get) => ({
     }));
   },
 
-  // Action to delete a transaction cleanly
+  // Action to delete a transaction cleanly with RBAC guard
   deleteTransaction: (id) => {
+    const isAdmin = useAuthStore.getState().isAdmin;
+    if (!isAdmin) {
+      console.warn('Unauthorized: Only admins can delete transactions.');
+      return;
+    }
+
     set((state) => ({
       transactions: state.transactions.filter((t) => t.id !== id),
     }));
   },
 
-  // Action to edit a transaction cleanly
+  // Action to edit a transaction cleanly with RBAC guard
   editTransaction: (id, updatedData) => {
+    const isAdmin = useAuthStore.getState().isAdmin;
+    if (!isAdmin) {
+      console.warn('Unauthorized: Only admins can edit transactions.');
+      return;
+    }
+
     set((state) => ({
       transactions: state.transactions.map((t) =>
         t.id === id ? { ...t, ...updatedData } : t
