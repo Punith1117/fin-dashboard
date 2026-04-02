@@ -7,7 +7,11 @@ export function TransactionControls({
   typeFilter, 
   setTypeFilter, 
   categoryFilter, 
-  setCategoryFilter 
+  setCategoryFilter,
+  minAmount,
+  setMinAmount,
+  maxAmount,
+  setMaxAmount
 }) {
   return (
     <div className="mb-6 px-2 flex flex-col gap-4">
@@ -73,6 +77,38 @@ export function TransactionControls({
               </option>
             ))}
           </select>
+        </div>
+
+        {/* Amount Range */}
+        <div className="flex-[2] min-w-[200px] flex gap-2">
+          <div className="flex-1">
+            <label htmlFor="min-amount" className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 ml-1">
+              Min ($)
+            </label>
+            <input
+              type="number"
+              id="min-amount"
+              value={minAmount}
+              onChange={(e) => setMinAmount(e.target.value)}
+              placeholder="0"
+              min="0"
+              className="block w-full px-3 py-2.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-finance-primary/20 focus:border-finance-primary transition-all"
+            />
+          </div>
+          <div className="flex-1">
+            <label htmlFor="max-amount" className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 ml-1">
+              Max ($)
+            </label>
+            <input
+              type="number"
+              id="max-amount"
+              value={maxAmount}
+              onChange={(e) => setMaxAmount(e.target.value)}
+              placeholder="Max"
+              min="0"
+              className="block w-full px-3 py-2.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-finance-primary/20 focus:border-finance-primary transition-all"
+            />
+          </div>
         </div>
       </div>
     </div>

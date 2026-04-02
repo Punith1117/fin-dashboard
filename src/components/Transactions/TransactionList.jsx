@@ -9,6 +9,8 @@ export function TransactionList() {
   const [searchQuery, setSearchQuery] = useState('');
   const [typeFilter, setTypeFilter] = useState('all');
   const [categoryFilter, setCategoryFilter] = useState('all');
+  const [minAmount, setMinAmount] = useState('');
+  const [maxAmount, setMaxAmount] = useState('');
   const debouncedSearchQuery = useDebounce(searchQuery, 500);
 
   const filteredTransactions = useMemo(() => {
@@ -22,6 +24,14 @@ export function TransactionList() {
     // Filter by Category
     if (categoryFilter !== 'all') {
       result = result.filter((t) => t.category === categoryFilter);
+    }
+
+    // Filter by Amount Range
+    if (minAmount !== '') {
+      result = result.filter((t) => Number(t.amount) >= Number(minAmount));
+    }
+    if (maxAmount !== '') {
+      result = result.filter((t) => Number(t.amount) <= Number(maxAmount));
     }
 
     // Filter by Search Query
@@ -38,14 +48,16 @@ export function TransactionList() {
     result.sort((a, b) => new Date(b.date) - new Date(a.date));
 
     return result;
-  }, [transactions, debouncedSearchQuery, typeFilter, categoryFilter]);
+  }, [transactions, debouncedSearchQuery, typeFilter, categoryFilter, minAmount, maxAmount]);
 
-  const isFiltered = searchQuery !== '' || typeFilter !== 'all' || categoryFilter !== 'all';
+  const isFiltered = searchQuery !== '' || typeFilter !== 'all' || categoryFilter !== 'all' || minAmount !== '' || maxAmount !== '';
 
   const resetFilters = () => {
     setSearchQuery('');
     setTypeFilter('all');
     setCategoryFilter('all');
+    setMinAmount('');
+    setMaxAmount('');
   };
 
   return (
@@ -59,6 +71,10 @@ export function TransactionList() {
         setTypeFilter={setTypeFilter}
         categoryFilter={categoryFilter}
         setCategoryFilter={setCategoryFilter}
+        minAmount={minAmount}
+        setMinAmount={setMinAmount}
+        maxAmount={maxAmount}
+        setMaxAmount={setMaxAmount}
       />
 
       <div className="rounded-2xl border border-gray-100 bg-finance-surface shadow-sm overflow-hidden min-h-[100px]">
