@@ -1,8 +1,9 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useTransactionStore } from '../../store/useTransactionStore';
 import { TransactionItem } from './TransactionItem';
 import { TransactionControls } from './TransactionControls';
 import { EditTransactionModal } from './EditTransactionModal';
+import { Pagination } from './Pagination';
 import { useDebounce } from '../../hooks/useDebounce';
 
 export function TransactionList() {
@@ -15,6 +16,9 @@ export function TransactionList() {
   const [maxAmount, setMaxAmount] = useState('');
   const [sortConfig, setSortConfig] = useState({ key: 'date', order: 'desc' });
   const debouncedSearchQuery = useDebounce(searchQuery, 500);
+
+  const ITEMS_PER_PAGE = 10;
+  const [currentPage, setCurrentPage] = useState(1);
 
   const filteredTransactions = useMemo(() => {
     let result = [...transactions];
@@ -63,6 +67,27 @@ export function TransactionList() {
 
     return result;
   }, [transactions, debouncedSearchQuery, typeFilter, categoryFilter, minAmount, maxAmount, sortConfig]);
+
+  const totalPages = Math.ceil(filteredTransactions.length / ITEMS_PER_PAGE);
+
+  // Edge case handle: when a delete/edit reduces total results below current page
+  useEffect(() => {
+    if (currentPage > totalPages && totalPages > 0) {
+      setCurrentPage(totalPages);
+    } else if (totalPages === 0 && currentPage !== 1) {
+      setCurrentPage(1);
+    }
+  }, [totalPages, currentPage]);
+
+  // Reset to first page when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [debouncedSearchQuery, typeFilter, categoryFilter, minAmount, maxAmount, sortConfig]);
+
+  const paginatedTransactions = filteredTransactions.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
 
   const isFiltered = searchQuery !== '' || typeFilter !== 'all' || categoryFilter !== 'all' || minAmount !== '' || maxAmount !== '';
 
@@ -121,13 +146,21 @@ export function TransactionList() {
           </div>
         ) : (
           <div className="flex flex-col">
-            {filteredTransactions.map((transaction) => (
+            {paginatedTransactions.map((transaction) => (
               <TransactionItem 
                 key={transaction.id} 
                 transaction={transaction} 
                 onEdit={() => setEditingTransaction(transaction)}
               />
             ))}
+            
+            {totalPages > 0 && (
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={setCurrentPage}
+              />
+            )}
           </div>
         )}
       </div>
