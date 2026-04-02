@@ -11,7 +11,11 @@ export function TransactionControls({
   minAmount,
   setMinAmount,
   maxAmount,
-  setMaxAmount
+  setMaxAmount,
+  sortConfig,
+  setSortConfig,
+  isFiltered,
+  resetFilters
 }) {
   return (
     <div className="mb-6 px-2 flex flex-col gap-4">
@@ -110,7 +114,55 @@ export function TransactionControls({
             />
           </div>
         </div>
+        
+        {/* Sort Controls */}
+        <div className="flex-[1.5] min-w-[200px] flex gap-2">
+          <div className="flex-[2]">
+            <label htmlFor="sort-key" className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 ml-1">
+              Sort By
+            </label>
+            <select
+              id="sort-key"
+              value={sortConfig.key}
+              onChange={(e) => setSortConfig({ ...sortConfig, key: e.target.value })}
+              className="block w-full px-3 py-2.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-finance-primary/20 focus:border-finance-primary transition-all cursor-pointer"
+            >
+              <option value="date">Date</option>
+              <option value="amount">Amount</option>
+              <option value="category">Category</option>
+            </select>
+          </div>
+          <div className="flex-1">
+            <label htmlFor="sort-order" className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 ml-1">
+              Order
+            </label>
+            <select
+              id="sort-order"
+              value={sortConfig.order}
+              onChange={(e) => setSortConfig({ ...sortConfig, order: e.target.value })}
+              className="block w-full px-3 py-2.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-finance-primary/20 focus:border-finance-primary transition-all cursor-pointer"
+            >
+              <option value="desc">Desc</option>
+              <option value="asc">Asc</option>
+            </select>
+          </div>
+        </div>
       </div>
+
+      {/* Clear All Active Filters */}
+      {isFiltered && (
+        <div className="flex justify-end mt-2 px-1">
+          <button
+            onClick={resetFilters}
+            className="text-xs font-medium text-finance-primary hover:text-finance-primary/80 transition-colors flex items-center gap-1"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            Clear All Filters
+          </button>
+        </div>
+      )}
     </div>
   );
 }

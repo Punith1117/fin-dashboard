@@ -11,6 +11,7 @@ export function TransactionList() {
   const [categoryFilter, setCategoryFilter] = useState('all');
   const [minAmount, setMinAmount] = useState('');
   const [maxAmount, setMaxAmount] = useState('');
+  const [sortConfig, setSortConfig] = useState({ key: 'date', order: 'desc' });
   const debouncedSearchQuery = useDebounce(searchQuery, 500);
 
   const filteredTransactions = useMemo(() => {
@@ -44,11 +45,22 @@ export function TransactionList() {
       );
     }
 
-    // Default Sort: Newest First
-    result.sort((a, b) => new Date(b.date) - new Date(a.date));
+    // sort logic
+    result.sort((a, b) => {
+      let comparison = 0;
+      if (sortConfig.key === 'date') {
+        comparison = new Date(a.date) - new Date(b.date);
+      } else if (sortConfig.key === 'amount') {
+        comparison = Number(a.amount) - Number(b.amount);
+      } else if (sortConfig.key === 'category') {
+        comparison = (a.category || '').localeCompare(b.category || '');
+      }
+
+      return sortConfig.order === 'desc' ? -comparison : comparison;
+    });
 
     return result;
-  }, [transactions, debouncedSearchQuery, typeFilter, categoryFilter, minAmount, maxAmount]);
+  }, [transactions, debouncedSearchQuery, typeFilter, categoryFilter, minAmount, maxAmount, sortConfig]);
 
   const isFiltered = searchQuery !== '' || typeFilter !== 'all' || categoryFilter !== 'all' || minAmount !== '' || maxAmount !== '';
 
@@ -58,6 +70,7 @@ export function TransactionList() {
     setCategoryFilter('all');
     setMinAmount('');
     setMaxAmount('');
+    setSortConfig({ key: 'date', order: 'desc' });
   };
 
   return (
@@ -75,6 +88,10 @@ export function TransactionList() {
         setMinAmount={setMinAmount}
         maxAmount={maxAmount}
         setMaxAmount={setMaxAmount}
+        sortConfig={sortConfig}
+        setSortConfig={setSortConfig}
+        isFiltered={isFiltered}
+        resetFilters={resetFilters}
       />
 
       <div className="rounded-2xl border border-gray-100 bg-finance-surface shadow-sm overflow-hidden min-h-[100px]">
