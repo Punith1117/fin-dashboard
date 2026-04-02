@@ -61,6 +61,22 @@ export const useTransactionStore = create((set, get) => ({
     }));
   },
 
+  // Action to delete a transaction cleanly
+  deleteTransaction: (id) => {
+    set((state) => ({
+      transactions: state.transactions.filter((t) => t.id !== id),
+    }));
+  },
+
+  // Action to edit a transaction cleanly
+  editTransaction: (id, updatedData) => {
+    set((state) => ({
+      transactions: state.transactions.map((t) =>
+        t.id === id ? { ...t, ...updatedData } : t
+      ),
+    }));
+  },
+
   // Selectors for derived state
   getTotalIncome: () => {
     return get().transactions
