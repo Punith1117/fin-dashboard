@@ -2,10 +2,12 @@ import React, { useState, useMemo } from 'react';
 import { useTransactionStore } from '../../store/useTransactionStore';
 import { TransactionItem } from './TransactionItem';
 import { TransactionControls } from './TransactionControls';
+import { EditTransactionModal } from './EditTransactionModal';
 import { useDebounce } from '../../hooks/useDebounce';
 
 export function TransactionList() {
   const transactions = useTransactionStore((state) => state.transactions);
+  const [editingTransaction, setEditingTransaction] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [typeFilter, setTypeFilter] = useState('all');
   const [categoryFilter, setCategoryFilter] = useState('all');
@@ -120,11 +122,21 @@ export function TransactionList() {
         ) : (
           <div className="flex flex-col">
             {filteredTransactions.map((transaction) => (
-              <TransactionItem key={transaction.id} transaction={transaction} />
+              <TransactionItem 
+                key={transaction.id} 
+                transaction={transaction} 
+                onEdit={() => setEditingTransaction(transaction)}
+              />
             ))}
           </div>
         )}
       </div>
+
+      <EditTransactionModal
+        transaction={editingTransaction}
+        isOpen={!!editingTransaction}
+        onClose={() => setEditingTransaction(null)}
+      />
     </div>
   );
 }

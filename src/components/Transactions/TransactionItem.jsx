@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { formatCurrency } from '../../utils/formatters';
 import { useAuthStore } from '../../store/useAuthStore';
 import { useTransactionStore } from '../../store/useTransactionStore';
 import { Edit2, Trash2 } from 'lucide-react';
-import { EditTransactionModal } from './EditTransactionModal';
 
-export function TransactionItem({ transaction }) {
+export function TransactionItem({ transaction, onEdit }) {
   const { amount, type, category, note, date } = transaction;
   const isAdmin = useAuthStore((state) => state.isAdmin);
   const deleteTransaction = useTransactionStore((state) => state.deleteTransaction);
-  
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   
   const isIncome = type === 'income';
   const amountColor = isIncome ? 'text-finance-success' : 'text-finance-danger';
@@ -49,7 +46,7 @@ export function TransactionItem({ transaction }) {
           {isAdmin && (
             <div className="flex items-center gap-2">
               <button
-                onClick={() => setIsEditModalOpen(true)}
+                onClick={onEdit}
                 className="p-2 text-gray-400 hover:text-finance-primary hover:bg-finance-primary/10 rounded-lg transition-colors"
                 title="Edit Transaction"
               >
@@ -66,12 +63,6 @@ export function TransactionItem({ transaction }) {
           )}
         </div>
       </div>
-
-      <EditTransactionModal
-        transaction={transaction}
-        isOpen={isEditModalOpen}
-        onClose={() => setIsEditModalOpen(false)}
-      />
     </>
   );
 }
