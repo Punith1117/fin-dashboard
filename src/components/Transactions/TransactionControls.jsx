@@ -31,7 +31,7 @@ export function TransactionControls({
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Search by note or category..."
-          className="block w-full pl-10 pr-10 py-3 border border-gray-200 rounded-2xl leading-5 bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-finance-primary/20 focus:border-finance-primary sm:text-sm shadow-sm transition-all"
+          className="block w-full lg:pl-10 pl-8 lg:pr-10 pr-8 lg:py-3 py-2 border border-gray-200 rounded-2xl leading-5 bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-finance-primary/20 focus:border-finance-primary sm:text-sm shadow-sm transition-all"
         />
         {searchQuery && (
           <button
@@ -56,7 +56,7 @@ export function TransactionControls({
             id="type-filter"
             value={typeFilter}
             onChange={(e) => setTypeFilter(e.target.value)}
-            className="block w-full px-3 py-2.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-finance-primary/20 focus:border-finance-primary transition-all cursor-pointer"
+            className="block w-full px-3 lg:py-2.5 py-1.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-finance-primary/20 focus:border-finance-primary transition-all cursor-pointer"
           >
             <option value="all">All Types</option>
             <option value="income">Income</option>
@@ -72,7 +72,7 @@ export function TransactionControls({
             id="category-filter"
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}
-            className="block w-full px-3 py-2.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-finance-primary/20 focus:border-finance-primary transition-all cursor-pointer"
+            className="block w-full px-3 lg:py-2.5 py-1.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-finance-primary/20 focus:border-finance-primary transition-all cursor-pointer"
           >
             <option value="all">All Categories</option>
             {categories.map((cat) => (
@@ -96,7 +96,7 @@ export function TransactionControls({
               onChange={(e) => setMinAmount(e.target.value)}
               placeholder="0"
               min="0"
-              className="block w-full px-3 py-2.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-finance-primary/20 focus:border-finance-primary transition-all"
+              className="block w-full px-3 lg:py-2.5 py-1.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-finance-primary/20 focus:border-finance-primary transition-all"
             />
           </div>
           <div className="flex-1">
@@ -110,7 +110,7 @@ export function TransactionControls({
               onChange={(e) => setMaxAmount(e.target.value)}
               placeholder="Max"
               min="0"
-              className="block w-full px-3 py-2.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-finance-primary/20 focus:border-finance-primary transition-all"
+              className="block w-full px-3 lg:py-2.5 py-1.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-finance-primary/20 focus:border-finance-primary transition-all"
             />
           </div>
         </div>
@@ -125,7 +125,7 @@ export function TransactionControls({
               id="sort-key"
               value={sortConfig.key}
               onChange={(e) => setSortConfig({ ...sortConfig, key: e.target.value })}
-              className="block w-full px-3 py-2.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-finance-primary/20 focus:border-finance-primary transition-all cursor-pointer"
+              className="block w-full px-3 lg:py-2.5 py-1.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-finance-primary/20 focus:border-finance-primary transition-all cursor-pointer"
             >
               <option value="date">Date</option>
               <option value="amount">Amount</option>
@@ -140,7 +140,7 @@ export function TransactionControls({
               id="sort-order"
               value={sortConfig.order}
               onChange={(e) => setSortConfig({ ...sortConfig, order: e.target.value })}
-              className="block w-full px-3 py-2.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-finance-primary/20 focus:border-finance-primary transition-all cursor-pointer"
+              className="block w-full px-3 lg:py-2.5 py-1.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-finance-primary/20 focus:border-finance-primary transition-all cursor-pointer"
             >
               <option value="desc">Desc</option>
               <option value="asc">Asc</option>
