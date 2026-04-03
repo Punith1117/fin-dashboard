@@ -50,3 +50,34 @@ export const formatBalanceTrendData = (transactions) => {
   return months;
 };
 
+/**
+ * Transforms transactions into category distribution data for PieChart.
+ * Groups by category, sorts by absolute amount, takes top 6, and groups the rest.
+ */
+export const formatCategoryDistributionData = (transactions) => {
+  const expenseMap = {};
+  
+  // Aggregate only expenses
+  transactions
+    .filter(tx => tx.type === 'expense')
+    .forEach(tx => {
+      const category = tx.category || 'Uncategorized';
+      expenseMap[category] = (expenseMap[category] || 0) + Math.abs(Number(tx.amount));
+    });
+
+  // Convert to array and sort
+  const sortedCategories = Object.entries(expenseMap)
+    .map(([name, value]) => ({ name, value }))
+    .sort((a, b) => b.value - a.value);
+
+  if (sortedCategories.length <= 6) {
+    return sortedCategories;
+  }
+
+  // Group top 6 and Others
+  const topSix = sortedCategories.slice(0, 6);
+  const othersValue = sortedCategories.slice(6).reduce((sum, item) => sum + item.value, 0);
+  
+  return [...topSix, { name: 'Others', value: othersValue }];
+};
+
