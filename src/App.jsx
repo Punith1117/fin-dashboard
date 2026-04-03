@@ -13,7 +13,7 @@ function App() {
     <>
     <div className="min-h-screen lg:p-8">
       <div className="max-w-5xl mx-auto rounded-2xl shadow-sm bg-finance-surface lg:p-6 p-3">
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-6 sticky top-0 bg-finance-surface z-10 p-2">
           <h1 className="text-2xl font-bold text-finance-primary">Finance Dashboard</h1>
           <button
             onClick={toggleAdminMode}
