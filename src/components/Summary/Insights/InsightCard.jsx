@@ -25,12 +25,15 @@ const InsightCard = ({ title, value, highlight, icon: Icon, type = 'info', toolt
       onMouseLeave={() => setShowTooltip(false)}
     >
       {/* Tooltip Overlay */}
-      {showTooltip && tooltip && (
-        <div className="absolute z-50 bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2 text-xs font-medium bg-gray-900 text-white rounded-lg shadow-xl animate-in fade-in zoom-in-95 duration-200">
+      <div 
+        className={`absolute z-50 bottom-full left-1/2 -translate-x-1/2 mb-2 pointer-events-none transition-all duration-200 ease-out 
+          ${showTooltip && tooltip ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-1'}`}
+      >
+        <div className="w-48 p-2 text-xs font-medium bg-gray-900 text-white rounded-lg shadow-xl">
           {tooltip}
           <div className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-gray-900" />
         </div>
-      )}
+      </div>
 
       <div className="flex items-start justify-between gap-3">
         <div className="flex-1 min-w-0">
