@@ -87,7 +87,7 @@ export function TransactionControls({
         <div className="flex-[2] min-w-[200px] flex gap-2">
           <div className="flex-1">
             <label htmlFor="min-amount" className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 ml-1">
-              Min ($)
+              Min (₹)
             </label>
             <input
               type="number"
@@ -101,7 +101,7 @@ export function TransactionControls({
           </div>
           <div className="flex-1">
             <label htmlFor="max-amount" className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 ml-1">
-              Max ($)
+              Max (₹)
             </label>
             <input
               type="number"
