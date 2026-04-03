@@ -22,7 +22,7 @@ export function AddTransactionModal() {
         className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-finance-primary hover:bg-finance-primary/90 active:scale-95 text-white px-5 py-3 rounded-2xl text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-200"
       >
         <Plus size={18} />
-        Add Transaction
+        <span className="hidden sm:inline">Add Transaction</span>
       </button>
 
       <Modal
