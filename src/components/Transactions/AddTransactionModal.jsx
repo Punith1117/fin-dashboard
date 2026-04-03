@@ -15,22 +15,24 @@ export function AddTransactionModal() {
 
   return (
     <>
-      <button 
+      {/* Floating Action Button — fixed to bottom-right of the viewport */}
+      <button
         onClick={() => setIsOpen(true)}
-        className="flex items-center gap-2 bg-finance-primary hover:bg-finance-primary/90 text-white px-4 py-2 rounded-xl text-sm font-medium transition-colors"
+        title="Add Transaction"
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-finance-primary hover:bg-finance-primary/90 active:scale-95 text-white px-5 py-3 rounded-2xl text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-200"
       >
         <Plus size={18} />
         Add Transaction
       </button>
 
-      <Modal 
-        isOpen={isOpen} 
-        onClose={() => setIsOpen(false)} 
+      <Modal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
         title="Add New Transaction"
       >
-        <AddTransactionForm 
-          onSubmit={handleSubmit} 
-          onCancel={() => setIsOpen(false)} 
+        <AddTransactionForm
+          onSubmit={handleSubmit}
+          onCancel={() => setIsOpen(false)}
         />
       </Modal>
     </>
