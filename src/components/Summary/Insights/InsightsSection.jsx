@@ -106,7 +106,7 @@ const InsightsSection = () => {
   }, [transactions, month, year, prevMonth, prevYear]);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+    <div className="grid grid-cols-2 lg:grid-cols-4 lg:gap-4 gap-2 mb-1">
       {insights.map((insight, index) => (
         <InsightCard 
           key={index}

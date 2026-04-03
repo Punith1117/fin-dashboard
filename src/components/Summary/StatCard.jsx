@@ -25,13 +25,13 @@ export function StatCard({ label, amount, type = 'primary', icon: Icon }) {
   const currentStyle = styles[type] || styles.primary;
 
   return (
-    <div className={`p-6 rounded-2xl border ${currentStyle.border} ${currentStyle.bg} flex items-center justify-between`}>
+    <div className={`p-2 lg:p-6 lg:rounded-2xl border ${currentStyle.border} ${currentStyle.bg} flex items-center justify-between`}>
       <div>
         <h3 className="text-sm font-medium text-gray-500 mb-1">{label}</h3>
-        <p className="text-2xl font-bold text-gray-900">{amount}</p>
+        <p className="lg:text-2xl text-xl font-bold text-gray-900">{amount}</p>
       </div>
       {Icon && (
-        <div className={`p-3 rounded-xl ${currentStyle.iconBg}`}>
+        <div className={`hidden md:block p-3 rounded-xl ${currentStyle.iconBg}`}>
           <Icon className={currentStyle.text} size={24} strokeWidth={2} />
         </div>
       )}

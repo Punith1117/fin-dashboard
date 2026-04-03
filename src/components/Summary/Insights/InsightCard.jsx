@@ -20,7 +20,7 @@ const InsightCard = ({ title, value, highlight, icon: Icon, type = 'info', toolt
 
   return (
     <div 
-      className={`relative overflow-visible rounded-xl border bg-gradient-to-br p-4 transition-all duration-300 hover:shadow-md ${typeStyles[type]}`}
+      className={`relative overflow-visible rounded-xl border bg-gradient-to-br lg:p-4 p-2 transition-all duration-300 hover:shadow-md ${typeStyles[type]}`}
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
     >
@@ -35,13 +35,12 @@ const InsightCard = ({ title, value, highlight, icon: Icon, type = 'info', toolt
         </div>
       </div>
 
-      <div className="flex items-start justify-between gap-3">
+      <div className="flex items-start justify-between lg:gap-3">
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-1.5 mb-1">
             <p className="text-[10px] font-bold uppercase tracking-wider opacity-70">
               {title}
             </p>
-            <Info size={10} className="opacity-40 cursor-help" />
           </div>
           <h3 className="text-base font-bold text-gray-900 leading-tight">
             {value}
@@ -50,7 +49,7 @@ const InsightCard = ({ title, value, highlight, icon: Icon, type = 'info', toolt
             {highlight}
           </p>
         </div>
-        <div className={`p-2.5 rounded-lg shrink-0 mt-0.5 ${iconBgStyles[type]}`}>
+        <div className={`lg:p-2.5 p-1.5 rounded-lg shrink-0 mt-0.5 ${iconBgStyles[type]}`}>
           <Icon size={16} />
         </div>
       </div>
