@@ -1,5 +1,5 @@
 import { StatsGrid } from './components/Summary/StatsGrid';
-import { DashboardCharts } from './components/Summary/DashboardCharts';
+import { AnalyticsSection } from './components/Summary/AnalyticsSection';
 import { TransactionList } from './components/Transactions/TransactionList';
 import { AddTransactionModal } from './components/Transactions/AddTransactionModal';
 import { Shield } from 'lucide-react';
@@ -32,7 +32,7 @@ function App() {
         
         <StatsGrid />
         
-        <DashboardCharts />
+        <AnalyticsSection />
         
         <TransactionList />
       </div>
