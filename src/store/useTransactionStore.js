@@ -3,166 +3,42 @@ import { useAuthStore } from './useAuthStore';
 
 // Pre-seeded mock transactions
 const initialTransactions = [
-  {
-    id: '1',
-    amount: 50000,
-    type: 'income',
-    category: 'Salary',
-    note: 'April Salary',
-    date: new Date('2026-03-01T10:00:00').toISOString(),
-  },
-  {
-    id: '2',
-    amount: 1500,
-    type: 'expense',
-    category: 'Food & Dining',
-    note: 'Dinner at restaurant',
-    date: new Date('2026-03-02T20:30:00').toISOString(),
-  },
-  {
-    id: '3',
-    amount: 12000,
-    type: 'expense',
-    category: 'Rent',
-    note: 'April Rent',
-    date: new Date('2026-03-05T09:00:00').toISOString(),
-  },
-  {
-    id: '4',
-    amount: 8000,
-    type: 'income',
-    category: 'Freelance',
-    note: 'Side project milestone',
-    date: new Date('2026-03-10T15:00:00').toISOString(),
-  },
-  {
-    id: '5',
-    amount: 2500,
-    type: 'expense',
-    category: 'Utilities',
-    note: 'Electricity Bill',
-    date: new Date('2026-03-15T11:20:00').toISOString(),
-  },
-  {
-    id: '6',
-    amount: 1200,
-    type: 'expense',
-    category: 'Entertainment',
-    note: 'Movie night',
-    date: new Date('2026-03-16T19:00:00').toISOString(),
-  },
-  {
-    id: '7',
-    amount: 3000,
-    type: 'income',
-    category: 'Interest',
-    note: 'Savings account interest',
-    date: new Date('2026-03-17T08:00:00').toISOString(),
-  },
-  {
-    id: '8',
-    amount: 450,
-    type: 'expense',
-    category: 'Transport',
-    note: 'Bus fare',
-    date: new Date('2026-03-18T09:30:00').toISOString(),
-  },
-  {
-    id: '9',
-    amount: 15000,
-    type: 'income',
-    category: 'Freelance',
-    note: 'Logo design project',
-    date: new Date('2026-03-19T14:00:00').toISOString(),
-  },
-  {
-    id: '10',
-    amount: 2200,
-    type: 'expense',
-    category: 'Shopping',
-    note: 'New headphones',
-    date: new Date('2026-03-20T16:45:00').toISOString(),
-  },
-  {
-    id: '11',
-    amount: 800,
-    type: 'expense',
-    category: 'Food & Dining',
-    note: 'Lunch at cafe',
-    date: new Date('2026-03-21T13:00:00').toISOString(),
-  },
-  {
-    id: '12',
-    amount: 5000,
-    type: 'income',
-    category: 'Investment',
-    note: 'Stock dividend',
-    date: new Date('2026-03-22T10:00:00').toISOString(),
-  },
-  {
-    id: '13',
-    amount: 3500,
-    type: 'expense',
-    category: 'Health',
-    note: 'Gym membership',
-    date: new Date('2026-03-23T07:30:00').toISOString(),
-  },
-  {
-    id: '14',
-    amount: 1200,
-    type: 'expense',
-    category: 'Utilities',
-    note: 'Internet Bill',
-    date: new Date('2026-04-01T15:20:00').toISOString(),
-  },
-  {
-    id: '15',
-    amount: 6000,
-    type: 'income',
-    category: 'Freelance',
-    note: 'Consultation fee',
-    date: new Date('2026-04-01T11:00:00').toISOString(),
-  },
-  {
-    id: '16',
-    amount: 4500,
-    type: 'expense',
-    category: 'Food & Dining',
-    note: 'Grocery shopping',
-    date: new Date('2026-04-01T18:30:00').toISOString(),
-  },
-  {
-    id: '17',
-    amount: 1000,
-    type: 'expense',
-    category: 'Transport',
-    note: 'Fuel',
-    date: new Date('2026-04-02T10:15:00').toISOString(),
-  },
-  {
-    id: '18',
-    amount: 25000,
-    type: 'income',
-    category: 'Bonus',
-    note: 'Project completion bonus',
-    date: new Date('2026-04-02T09:00:00').toISOString(),
-  },
-  {
-    id: '19',
-    amount: 1500,
-    type: 'expense',
-    category: 'Entertainment',
-    note: 'Book purchase',
-    date: new Date('2026-04-02T14:30:00').toISOString(),
-  },
-  {
-    id: '20',
-    amount: 3000,
-    type: 'expense',
-    category: 'Shopping',
-    note: 'Gifts for friends',
-    date: new Date('2026-04-02T16:00:00').toISOString(),
-  }
+  // April 2026
+  { id: '20', amount: 3000, type: 'expense', category: 'Shopping', date: '2026-04-02T16:00:00Z' },
+  { id: '19', amount: 1500, type: 'expense', category: 'Entertainment', date: '2026-04-02T14:30:00Z' },
+  { id: '18', amount: 25000, type: 'income', category: 'Bonus', date: '2026-04-02T09:00:00Z' },
+  { id: '17', amount: 1000, type: 'expense', category: 'Transport', date: '2026-04-02T10:15:00Z' },
+  { id: '16', amount: 4500, type: 'expense', category: 'Food & Dining', date: '2026-04-01T18:30:00Z' },
+  { id: '15', amount: 6000, type: 'income', category: 'Freelance', date: '2026-04-01T11:00:00Z' },
+  { id: '14', amount: 1200, type: 'expense', category: 'Utilities', date: '2026-04-01T15:20:00Z' },
+  
+  // March 2026
+  { id: '13', amount: 50000, type: 'income', category: 'Salary', date: '2026-03-01T10:00:00Z' },
+  { id: '12', amount: 12000, type: 'expense', category: 'Rent', date: '2026-03-05T09:00:00Z' },
+  { id: '11', amount: 2500, type: 'expense', category: 'Utilities', date: '2026-03-15T11:20:00Z' },
+  { id: '10', amount: 8000, type: 'income', category: 'Freelance', date: '2026-03-10T15:00:00Z' },
+  { id: '9',  amount: 3500, type: 'expense', category: 'Health', date: '2026-03-23T07:30:00Z' },
+  
+  // February 2026
+  { id: 'feb-1', amount: 50000, type: 'income', category: 'Salary', date: '2026-02-01T10:00:00Z' },
+  { id: 'feb-2', amount: 12000, type: 'expense', category: 'Rent', date: '2026-02-05T09:00:00Z' },
+  { id: 'feb-3', amount: 4000,  type: 'expense', category: 'Food & Dining', date: '2026-02-10T18:00:00Z' },
+  
+  // January 2026
+  { id: 'jan-1', amount: 48000, type: 'income', category: 'Salary', date: '2026-01-01T10:00:00Z' },
+  { id: 'jan-2', amount: 12000, type: 'expense', category: 'Rent', date: '2026-01-05T09:00:00Z' },
+  { id: 'jan-3', amount: 5500,  type: 'expense', category: 'Shopping', date: '2026-01-15T14:00:00Z' },
+  { id: 'jan-4', amount: 2000,  type: 'expense', category: 'Entertainment', date: '2026-01-20T20:00:00Z' },
+  
+  // December 2025
+  { id: 'dec-1', amount: 48000, type: 'income', category: 'Salary', date: '2025-12-01T10:00:00Z' },
+  { id: 'dec-2', amount: 12000, type: 'expense', category: 'Rent', date: '2025-12-05T09:00:00Z' },
+  { id: 'dec-3', amount: 8000,  type: 'expense', category: 'Travel', date: '2025-12-22T08:00:00Z' },
+  
+  // November 2025
+  { id: 'nov-1', amount: 45000, type: 'income', category: 'Salary', date: '2025-11-01T10:00:00Z' },
+  { id: 'nov-2', amount: 12000, type: 'expense', category: 'Rent', date: '2025-11-05T09:00:00Z' },
+  { id: 'nov-3', amount: 3000,  type: 'expense', category: 'Food & Dining', date: '2025-11-12T19:00:00Z' }
 ];
 
 export const useTransactionStore = create((set, get) => ({
