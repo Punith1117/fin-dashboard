@@ -18,7 +18,7 @@ const CustomTooltip = ({ active, payload, label }) => {
     const expense = payload.find(p => p.dataKey === 'expense')?.value || 0;
 
     return (
-      <div className="bg-white/90 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-gray-100 min-w-[150px]">
+      <div className="bg-white/90 backdrop-blur-sm lg:p-4 p-2 rounded-xl shadow-lg border border-gray-100 min-w-[150px]">
         <p className="text-sm font-semibold text-gray-900 mb-2">{label}</p>
         <div className="space-y-1">
           <div className="flex justify-between gap-4">
@@ -54,8 +54,8 @@ export function BalanceTrendChart() {
   }, [transactions]);
 
   return (
-    <div className="bg-white p-6 rounded-2xl border border-gray-100 h-[400px] flex flex-col">
-      <div className="flex items-center justify-between mb-6">
+    <div className="bg-white lg:p-6 p-3 rounded-2xl border border-gray-100 lg:h-[400px] h-[300px] flex flex-col">
+      <div className="flex items-center justify-between lg:mb-6 mb-4">
         <div>
           <h3 className="text-lg font-bold text-gray-900">Balance Trend</h3>
           <p className="text-xs text-gray-500">Net monthly balance (6M)</p>
@@ -71,11 +71,11 @@ export function BalanceTrendChart() {
           <AreaChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
             <defs>
               <linearGradient id="colorBalance" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="var(--finance-primary)" stopOpacity={0.1}/>
+                <stop offset="5%" stopColor="var(--finance-primary)" stopOpacity={0.3}/>
                 <stop offset="95%" stopColor="var(--finance-primary)" stopOpacity={0}/>
               </linearGradient>
             </defs>
-            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#F3F4F6" />
+            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#c8daffff" />
             <XAxis 
               dataKey="month" 
               axisLine={false}

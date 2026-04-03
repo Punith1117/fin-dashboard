@@ -24,7 +24,7 @@ const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     const { name, value } = payload[0];
     return (
-      <div className="bg-white/90 backdrop-blur-sm p-3 rounded-xl shadow-lg border border-gray-100">
+      <div className="bg-white/90 backdrop-blur-sm lg:p-3 p-2 lg:rounded-xl rounded-lg shadow-lg border border-gray-100">
         <p className="text-sm font-semibold text-gray-900">{name}</p>
         <p className="text-xs font-bold text-finance-primary">₹{value.toLocaleString()}</p>
       </div>
@@ -41,8 +41,8 @@ export function CategoryDistributionChart() {
   }, [transactions]);
 
   return (
-    <div className="bg-white p-6 rounded-2xl border border-gray-100 h-[400px] flex flex-col">
-      <div className="flex items-center justify-between mb-6">
+    <div className="bg-white lg:p-6 p-3 rounded-2xl border border-gray-100 lg:h-[400px] h-[300px] flex flex-col">
+      <div className="flex items-center justify-between lg:mb-6 mb-4">
         <div>
           <h3 className="text-lg font-bold text-gray-900">Spending Breakdown</h3>
           <p className="text-xs text-gray-500">Top 6 categories</p>
@@ -57,8 +57,8 @@ export function CategoryDistributionChart() {
                 data={data}
                 cx="50%"
                 cy="50%"
-                innerRadius={45}
-                outerRadius={95}
+                innerRadius="45%"
+                outerRadius="95%"
                 paddingAngle={5}
                 dataKey="value"
               >
