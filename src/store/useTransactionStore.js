@@ -1,13 +1,14 @@
 import { create } from 'zustand';
 import { useAuthStore } from './useAuthStore';
+import { getStoredTransactions, saveTransactions } from '../utils/storage';
 
 // Pre-seeded mock transactions
 const initialTransactions = [
   // April 2026
   { id: '20', amount: 3000, type: 'expense', category: 'Shopping', date: '2026-04-02T16:00:00Z' },
   { id: '19', amount: 1500, type: 'expense', category: 'Entertainment', date: '2026-04-02T14:30:00Z' },
-  { id: '18', amount: 25000, type: 'income', category: 'Bonus', date: '2026-04-02T09:00:00Z' },
-  { id: '17', amount: 1000, type: 'expense', category: 'Transport', date: '2026-04-02T10:15:00Z' },
+  { id: '18', amount: 25000, type: 'income', category: 'Dividends', date: '2026-04-02T09:00:00Z' },
+  { id: '17', amount: 1000, type: 'expense', category: 'Transportation', date: '2026-04-02T10:15:00Z' },
   { id: '16', amount: 4500, type: 'expense', category: 'Food & Dining', date: '2026-04-01T18:30:00Z' },
   { id: '15', amount: 6000, type: 'income', category: 'Freelance', date: '2026-04-01T11:00:00Z' },
   { id: '14', amount: 1200, type: 'expense', category: 'Utilities', date: '2026-04-01T15:20:00Z' },
@@ -17,7 +18,7 @@ const initialTransactions = [
   { id: '12', amount: 12000, type: 'expense', category: 'Rent', date: '2026-03-05T09:00:00Z' },
   { id: '11', amount: 2500, type: 'expense', category: 'Utilities', date: '2026-03-15T11:20:00Z' },
   { id: '10', amount: 8000, type: 'income', category: 'Freelance', date: '2026-03-10T15:00:00Z' },
-  { id: '9',  amount: 3500, type: 'expense', category: 'Health', date: '2026-03-23T07:30:00Z' },
+  { id: '9',  amount: 3500, type: 'expense', category: 'Healthcare', date: '2026-03-23T07:30:00Z' },
   
   // February 2026
   { id: 'feb-1', amount: 50000, type: 'income', category: 'Salary', date: '2026-02-01T10:00:00Z' },
@@ -33,7 +34,7 @@ const initialTransactions = [
   // December 2025
   { id: 'dec-1', amount: 48000, type: 'income', category: 'Salary', date: '2025-12-01T10:00:00Z' },
   { id: 'dec-2', amount: 12000, type: 'expense', category: 'Rent', date: '2025-12-05T09:00:00Z' },
-  { id: 'dec-3', amount: 8000,  type: 'expense', category: 'Travel', date: '2025-12-22T08:00:00Z' },
+  { id: 'dec-3', amount: 8000,  type: 'expense', category: 'Entertainment', date: '2025-12-22T08:00:00Z' },
   
   // November 2025
   { id: 'nov-1', amount: 45000, type: 'income', category: 'Salary', date: '2025-11-01T10:00:00Z' },
@@ -42,20 +43,23 @@ const initialTransactions = [
 ];
 
 export const useTransactionStore = create((set, get) => ({
-  transactions: initialTransactions,
+  // Load transactions from localStorage or fall back to mock data
+  transactions: getStoredTransactions() || initialTransactions,
 
   // Action to add a transaction (prepends to list)
   addTransaction: (transaction) => {
-    set((state) => ({
-      transactions: [
+    set((state) => {
+      const newTransactions = [
         {
           id: Date.now().toString(),
           date: new Date().toISOString(),
           ...transaction,
         },
         ...state.transactions,
-      ],
-    }));
+      ];
+      saveTransactions(newTransactions);
+      return { transactions: newTransactions };
+    });
   },
 
   // Action to delete a transaction cleanly with RBAC guard
@@ -66,9 +70,11 @@ export const useTransactionStore = create((set, get) => ({
       return;
     }
 
-    set((state) => ({
-      transactions: state.transactions.filter((t) => t.id !== id),
-    }));
+    set((state) => {
+      const newTransactions = state.transactions.filter((t) => t.id !== id);
+      saveTransactions(newTransactions);
+      return { transactions: newTransactions };
+    });
   },
 
   // Action to edit a transaction cleanly with RBAC guard
@@ -79,11 +85,13 @@ export const useTransactionStore = create((set, get) => ({
       return;
     }
 
-    set((state) => ({
-      transactions: state.transactions.map((t) =>
+    set((state) => {
+      const newTransactions = state.transactions.map((t) =>
         t.id === id ? { ...t, ...updatedData } : t
-      ),
-    }));
+      );
+      saveTransactions(newTransactions);
+      return { transactions: newTransactions };
+    });
   },
 
   // Selectors for derived state
