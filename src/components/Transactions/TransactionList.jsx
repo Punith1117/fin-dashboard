@@ -102,7 +102,7 @@ export function TransactionList() {
 
   return (
     <div className="mt-8">
-      <h2 className="text-xl font-bold text-gray-800 mb-4 px-2">Transactions History</h2>
+      <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-4 px-2">Transactions History</h2>
       
       <TransactionControls 
         searchQuery={searchQuery} 
@@ -121,7 +121,7 @@ export function TransactionList() {
         resetFilters={resetFilters}
       />
 
-      <div className="rounded-2xl border border-gray-100 bg-finance-surface shadow-sm overflow-hidden min-h-[100px]">
+      <div className="rounded-2xl border border-gray-100 dark:border-gray-700 bg-finance-surface dark:bg-gray-800 shadow-sm overflow-hidden min-h-[100px]">
         {filteredTransactions.length === 0 ? (
           <div className="flex flex-col items-center justify-center p-12 text-gray-500">
             {transactions.length === 0 ? (

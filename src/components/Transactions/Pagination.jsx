@@ -5,7 +5,7 @@ export function Pagination({ currentPage, totalPages, onPageChange }) {
   if (totalPages <= 0) return null;
 
   return (
-    <div className="flex items-center justify-center gap-2 py-4 px-2 select-none border-t border-gray-100">
+    <div className="flex items-center justify-center gap-2 py-4 px-2 select-none border-t border-gray-100 dark:border-gray-700">
       <button
         onClick={() => onPageChange(1)}
         disabled={currentPage === 1}

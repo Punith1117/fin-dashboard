@@ -8,6 +8,7 @@ import {
   Legend 
 } from 'recharts';
 import { useTransactionStore } from '../../../store/useTransactionStore';
+import { useDarkModeStore } from '../../../store/useDarkModeStore';
 import { formatCategoryDistributionData } from '../../../utils/chartDataUtils';
 
 const COLORS = [
@@ -24,9 +25,9 @@ const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     const { name, value } = payload[0];
     return (
-      <div className="bg-white/90 backdrop-blur-sm lg:p-3 p-2 lg:rounded-xl rounded-lg shadow-lg border border-gray-100">
-        <p className="text-sm font-semibold text-gray-900">{name}</p>
-        <p className="text-xs font-bold text-finance-primary">₹{value.toLocaleString()}</p>
+      <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm lg:p-3 p-2 lg:rounded-xl rounded-lg shadow-lg border border-gray-100 dark:border-gray-700">
+        <p className="text-sm font-semibold text-gray-900 dark:text-gray-100">{name}</p>
+        <p className="text-xs font-bold text-finance-primary dark:brightness-200">₹{value.toLocaleString()}</p>
       </div>
     );
   }
@@ -41,11 +42,11 @@ export function CategoryDistributionChart() {
   }, [transactions]);
 
   return (
-    <div className="bg-white lg:p-6 p-3 rounded-2xl border border-gray-100 lg:h-[400px] h-[300px] flex flex-col">
+    <div className="bg-white dark:bg-gray-900 lg:p-6 p-3 rounded-2xl border border-gray-100 dark:border-gray-800 lg:h-[400px] h-[300px] flex flex-col">
       <div className="flex items-center justify-between lg:mb-6 mb-4">
         <div>
-          <h3 className="text-lg font-bold text-gray-900">Spending Breakdown</h3>
-          <p className="text-xs text-gray-500">Top 6 categories</p>
+          <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">Spending Breakdown</h3>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Top 6 categories</p>
         </div>
       </div>
       
@@ -71,7 +72,7 @@ export function CategoryDistributionChart() {
                 verticalAlign="bottom" 
                 height={36}
                 iconType="circle"
-                formatter={(value) => <span className="text-[11px] font-medium text-gray-500">{value}</span>}
+                formatter={(value) => <span className="text-[11px] font-medium text-gray-500 dark:text-gray-400">{value}</span>}
               />
             </PieChart>
           </ResponsiveContainer>

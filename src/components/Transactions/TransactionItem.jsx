@@ -27,10 +27,10 @@ export function TransactionItem({ transaction, onEdit }) {
 
   return (
     <>
-      <div className="flex items-center justify-between p-4 border-b border-gray-100 last:border-0 hover:bg-gray-50 transition-colors">
+      <div className="flex items-center justify-between p-4 border-b border-gray-100 last:border-0 hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:border-gray-700 transition-colors">
         <div className="flex flex-col">
-          <span className="font-semibold text-gray-800">{category}</span>
-          <span className="text-sm text-gray-500">{formattedDate}</span>
+          <span className="font-semibold text-gray-800 dark:text-gray-100">{category}</span>
+          <span className="text-sm text-gray-500 dark:text-gray-400">{formattedDate}</span>
           {note && (
             <span className="text-xs text-gray-400 mt-1 truncate max-w-[200px]" title={note}>
               {note}
@@ -47,7 +47,7 @@ export function TransactionItem({ transaction, onEdit }) {
             <div className="flex items-center gap-2">
               <button
                 onClick={onEdit}
-                className="p-2 text-gray-400 hover:text-finance-primary hover:bg-finance-primary/10 rounded-lg transition-colors"
+                className="p-2 text-gray-400 hover:text-finance-primary hover:text-gray-200 hover:bg-finance-primary/10 dark:hover:bg-finance-primary/40 rounded-lg transition-colors"
                 title="Edit Transaction"
               >
                 <Edit2 size={16} />
