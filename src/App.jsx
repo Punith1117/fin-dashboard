@@ -13,8 +13,14 @@ function App() {
     <>
     <div className="min-h-screen lg:p-8">
       <div className="max-w-5xl mx-auto rounded-2xl shadow-sm bg-finance-surface lg:p-6 p-3">
+        <div className="md:hidden flex justify-center mt-[-10px]">
+          <a href="https://github.com/Punith1117/fin-dashboard" title="source code" className="underline">by Punith1117</a>
+        </div>
         <div className="flex items-center justify-between mb-6 sticky top-0 bg-finance-surface z-10 p-2">
           <h1 className="text-2xl font-bold text-finance-primary">Finance Dashboard</h1>
+          <div className="hidden md:flex justify-center mt-[-10px]">
+            <a href="https://github.com/Punith1117/fin-dashboard" title="source code" className="underline">by Punith1117</a>
+          </div>
           <button
             onClick={toggleAdminMode}
             className={`flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium transition-colors border ${
