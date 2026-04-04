@@ -34,14 +34,15 @@ export function AddTransactionForm({ onSubmit, onCancel }) {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       {error && (
-        <div className="p-3 text-sm text-finance-danger bg-finance-danger/10 rounded-lg">
+        <div className="p-3 text-sm text-finance-danger bg-finance-danger/10 rounded-lg" role="alert" aria-live="polite">
           {error}
         </div>
       )}
 
       <div className="flex flex-col gap-1">
-        <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Type</label>
+        <label htmlFor="transaction-type" className="text-sm font-medium text-gray-700 dark:text-gray-300">Type</label>
         <select 
+          id="transaction-type"
           value={type} 
           onChange={(e) => setType(e.target.value)}
           className="p-2 border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-finance-primary/50"
@@ -52,8 +53,9 @@ export function AddTransactionForm({ onSubmit, onCancel }) {
       </div>
 
       <div className="flex flex-col gap-1">
-        <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Category</label>
+        <label htmlFor="transaction-category" className="text-sm font-medium text-gray-700 dark:text-gray-300">Category</label>
         <select 
+          id="transaction-category"
           value={category} 
           onChange={(e) => setCategory(e.target.value)}
           className="p-2 border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-finance-primary/50"
@@ -65,26 +67,30 @@ export function AddTransactionForm({ onSubmit, onCancel }) {
       </div>
 
       <div className="flex flex-col gap-1">
-        <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Amount (₹)</label>
+        <label htmlFor="transaction-amount" className="text-sm font-medium text-gray-700 dark:text-gray-300">Amount (₹)</label>
         <input 
+          id="transaction-amount"
           type="number" 
           value={amount} 
           onChange={(e) => setAmount(e.target.value)}
           placeholder="0.00"
           min="0.01"
           step="0.01"
+          aria-describedby="amount-description"
           className="p-2 border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-finance-primary/50"
         />
       </div>
 
       <div className="flex flex-col gap-1">
-        <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Note (optional, max 50 chars)</label>
+        <label htmlFor="transaction-note" className="text-sm font-medium text-gray-700 dark:text-gray-300">Note (optional, max 50 chars)</label>
         <input 
+          id="transaction-note"
           type="text" 
           value={note} 
           onChange={(e) => setNote(e.target.value)}
           placeholder="What was this for?"
           maxLength={50}
+          aria-describedby="note-description"
           className="p-2 border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-finance-primary/50"
         />
       </div>

@@ -16,7 +16,7 @@ export function StatsGrid() {
   const expense = getTotalExpense();
 
   return (
-    <div className="grid grid-cols-3 lg:gap-6 gap-1 lg:mb-8 mb-2 sticky lg:top-[55px] top-[75px] bg-finance-surface dark:bg-gray-900 z-10">
+    <div className="grid grid-cols-3 lg:gap-6 gap-1 lg:mb-8 mb-2 sticky lg:top-[55px] top-[75px] bg-finance-surface dark:bg-gray-900 z-10" aria-live="polite" aria-label="Financial summary">
       <StatCard 
         label="Total Balance" 
         amount={formatCurrency(balance)} 
