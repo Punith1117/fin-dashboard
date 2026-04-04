@@ -6,6 +6,35 @@ Designed with production-grade frontend patterns including scalable state manage
 
 ## [🚀 Live Demo](https://fin-dashboard-punith1117.netlify.app)
 
+## 📱 Preview
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="public/previews/summary-insights-charts.gif" width="100%" />
+      <br />
+      <em>Summary cards, insights & charts</em>
+    </td>
+    <td align="center">
+      <img src="public/previews/add-transaction-real-time-insights.gif" width="100%" />
+      <br />
+      <em>Add transaction with real-time insights</em>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="public/previews/search-sort-filter-pagination.gif" width="100%" />
+      <br />
+      <em>Search, sort, filter & pagination</em>
+    </td>
+    <td align="center">
+      <img src="public/previews/RBAC-dark-mode-data-persistence.gif" width="100%" />
+      <br />
+      <em>RBAC, dark mode & persistence</em>
+    </td>
+  </tr>
+</table>
+
 
 ## ✨ Key Features
 
