@@ -27,8 +27,8 @@ export function StatCard({ label, amount, type = 'primary', icon: Icon }) {
   return (
     <div className={`p-2 lg:p-6 lg:rounded-2xl border ${currentStyle.border} ${currentStyle.bg} flex items-center justify-between`}>
       <div>
-        <h3 className="text-sm font-medium text-gray-500 mb-1">{label}</h3>
-        <p className="lg:text-2xl text-xl font-bold text-gray-900">{amount}</p>
+        <h3 className="text-sm font-medium text-gray-500 dark:text-gray-300 mb-1">{label}</h3>
+        <p className="lg:text-2xl text-xl font-bold text-gray-900 dark:text-gray-200">{amount}</p>
       </div>
       {Icon && (
         <div className={`hidden md:block p-3 rounded-xl ${currentStyle.iconBg}`}>
