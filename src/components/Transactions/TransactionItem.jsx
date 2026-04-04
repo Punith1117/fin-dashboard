@@ -47,7 +47,7 @@ export function TransactionItem({ transaction, onEdit }) {
             <div className="flex items-center gap-2">
               <button
                 onClick={onEdit}
-                className="p-2 text-gray-400 hover:text-finance-primary hover:text-gray-200 hover:bg-finance-primary/10 dark:hover:bg-finance-primary/40 rounded-lg transition-colors"
+                className="p-2 text-gray-400 hover:text-finance-primary hover:bg-finance-primary/10 dark:hover:bg-finance-primary/40 rounded-lg transition-colors" 
                 title="Edit Transaction"
               >
                 <Edit2 size={16} />

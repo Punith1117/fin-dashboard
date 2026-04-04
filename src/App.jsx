@@ -26,12 +26,12 @@ function App() {
     <div className="min-h-screen lg:p-8 dark:bg-gray-600">
       <div className="max-w-5xl mx-auto rounded-2xl shadow-sm bg-finance-surface dark:bg-gray-900 lg:p-6 p-3">
         <div className="md:hidden flex justify-center mt-[-10px]">
-          <a href="https://github.com/Punith1117/fin-dashboard" title="source code" className="underline dark:text-gray-300">by Punith1117</a>
+          <a href="https://github.com/Punith1117/fin-dashboard" title="source code" target="_blank" rel="noopener noreferrer" className="underline dark:text-gray-300">by Punith1117</a>
         </div>
         <div className="flex items-center justify-between mb-6 sticky top-0 bg-finance-surface dark:bg-gray-900 z-10 p-2" role="banner">
           <h1 className="text-2xl font-bold text-finance-primary dark:brightness-150">Finance Dashboard</h1>
           <div className="hidden md:flex justify-center mt-[-10px]">
-            <a href="https://github.com/Punith1117/fin-dashboard" title="source code" className="underline dark:text-gray-300">by Punith1117</a>
+            <a href="https://github.com/Punith1117/fin-dashboard" title="source code" target="_blank" rel="noopener noreferrer" className="underline dark:text-gray-300">by Punith1117</a>
           </div>
           <button
             onClick={toggleAdminMode}
