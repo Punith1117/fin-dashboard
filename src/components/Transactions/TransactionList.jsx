@@ -101,7 +101,7 @@ export function TransactionList() {
   };
 
   return (
-    <div className="mt-8">
+    <section className="mt-8">
       <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-4 px-2">Transactions History</h2>
       
       <TransactionControls 
@@ -170,6 +170,6 @@ export function TransactionList() {
         isOpen={!!editingTransaction}
         onClose={() => setEditingTransaction(null)}
       />
-    </div>
+    </section>
   );
 }

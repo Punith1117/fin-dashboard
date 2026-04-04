@@ -28,7 +28,7 @@ function App() {
         <div className="md:hidden flex justify-center mt-[-10px]">
           <a href="https://github.com/Punith1117/fin-dashboard" title="source code" className="underline dark:text-gray-300">by Punith1117</a>
         </div>
-        <div className="flex items-center justify-between mb-6 sticky top-0 bg-finance-surface dark:bg-gray-900 z-10 p-2">
+        <div className="flex items-center justify-between mb-6 sticky top-0 bg-finance-surface dark:bg-gray-900 z-10 p-2" role="banner">
           <h1 className="text-2xl font-bold text-finance-primary dark:brightness-150">Finance Dashboard</h1>
           <div className="hidden md:flex justify-center mt-[-10px]">
             <a href="https://github.com/Punith1117/fin-dashboard" title="source code" className="underline dark:text-gray-300">by Punith1117</a>

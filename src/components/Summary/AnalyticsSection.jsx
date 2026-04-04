@@ -5,7 +5,7 @@ import InsightsSection from './Insights/InsightsSection';
 
 export function AnalyticsSection() {
   return (
-    <div className="flex flex-col gap-4">
+    <section className="flex flex-col gap-4">
       {/* Dynamic Insights Logic */}
       <InsightsSection />
       
@@ -14,6 +14,6 @@ export function AnalyticsSection() {
         <BalanceTrendChart />
         <CategoryDistributionChart />
       </div>
-    </div>
+    </section>
   );
 }
