@@ -94,6 +94,21 @@ export const useTransactionStore = create((set, get) => ({
     });
   },
 
+  // Action to clear all transactions cleanly with RBAC guard
+  clearAllTransactions: () => {
+    const isAdmin = useAuthStore.getState().isAdmin;
+    if (!isAdmin) {
+      console.warn('Unauthorized: Only admins can clear all transactions.');
+      return;
+    }
+
+    set((state) => {
+      const newTransactions = [];
+      saveTransactions(newTransactions);
+      return { transactions: newTransactions };
+    });
+  },
+
   // Selectors for derived state
   getTotalIncome: () => {
     return get().transactions

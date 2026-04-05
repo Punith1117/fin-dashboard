@@ -3,6 +3,7 @@ import { AnalyticsSection } from './components/Summary/AnalyticsSection';
 import { TransactionList } from './components/Transactions/TransactionList';
 import { AddTransactionModal } from './components/Transactions/AddTransactionModal';
 import { DarkModeToggle } from './components/DarkModeToggle';
+import { ClearAllButton } from './components/Transactions/ClearAllButton';
 import { Shield } from 'lucide-react';
 import { useAuthStore } from './store/useAuthStore';
 import { useDarkModeStore } from './store/useDarkModeStore';
@@ -55,7 +56,11 @@ function App() {
     </div>
 
     <AddTransactionModal />
-    <DarkModeToggle />
+    
+    <div className="fixed bottom-6 left-6 z-50 flex flex-col gap-2">
+      <DarkModeToggle />
+      <ClearAllButton />
+    </div>
     </>
   );
 }
