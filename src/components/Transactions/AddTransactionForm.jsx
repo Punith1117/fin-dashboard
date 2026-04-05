@@ -17,6 +17,12 @@ export function AddTransactionForm({ onSubmit, onCancel }) {
       return;
     }
 
+    // Check for more than 2 decimal places
+    if (amount.includes('.') && amount.split('.')[1].length > 2) {
+      setError('Maximum 2 decimal places allowed');
+      return;
+    }
+
     if (note.length > 50) {
       setError('Note must be 50 characters or less');
       return;

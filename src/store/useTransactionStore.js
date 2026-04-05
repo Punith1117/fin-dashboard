@@ -98,13 +98,13 @@ export const useTransactionStore = create((set, get) => ({
   getTotalIncome: () => {
     return get().transactions
       .filter((t) => t.type === 'income')
-      .reduce((sum, t) => sum + Number(t.amount), 0);
+      .reduce((sum, t) => Math.round((sum + Number(t.amount)) * 100) / 100, 0);
   },
 
   getTotalExpense: () => {
     return get().transactions
       .filter((t) => t.type === 'expense')
-      .reduce((sum, t) => sum + Number(t.amount), 0);
+      .reduce((sum, t) => Math.round((sum + Number(t.amount)) * 100) / 100, 0);
   },
 
   getTotalBalance: () => {
@@ -112,10 +112,10 @@ export const useTransactionStore = create((set, get) => ({
     let expense = 0;
     
     get().transactions.forEach((t) => {
-      if (t.type === 'income') income += Number(t.amount);
-      if (t.type === 'expense') expense += Number(t.amount);
+      if (t.type === 'income') income = Math.round((income + Number(t.amount)) * 100) / 100;
+      if (t.type === 'expense') expense = Math.round((expense + Number(t.amount)) * 100) / 100;
     });
 
-    return income - expense;
+    return Math.round((income - expense) * 100) / 100;
   },
 }));

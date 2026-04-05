@@ -57,7 +57,7 @@ export function TransactionList() {
       if (sortConfig.key === 'date') {
         comparison = new Date(a.date) - new Date(b.date);
       } else if (sortConfig.key === 'amount') {
-        comparison = Number(a.amount) - Number(b.amount);
+        comparison = Math.round((Number(a.amount) - Number(b.amount)) * 100) / 100;
       } else if (sortConfig.key === 'category') {
         comparison = (a.category || '').localeCompare(b.category || '');
       }
