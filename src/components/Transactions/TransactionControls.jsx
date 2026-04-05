@@ -96,6 +96,7 @@ export function TransactionControls({
               onChange={(e) => setMinAmount(e.target.value)}
               placeholder="0"
               min="0"
+              max="9999999"
               className="block w-full px-3 lg:py-2.5 py-1.5 bg-white dark:text-gray-200 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-finance-primary/50 focus:border-finance-primary dark:focus:ring-finance-primary/50 dark:focus:border-finance-primary transition-all"
             />
           </div>
@@ -110,6 +111,7 @@ export function TransactionControls({
               onChange={(e) => setMaxAmount(e.target.value)}
               placeholder="Max"
               min="0"
+              max="9999999"
               className="block w-full px-3 lg:py-2.5 py-1.5 bg-white dark:text-gray-200 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-finance-primary/50 focus:border-finance-primary dark:focus:ring-finance-primary/50 dark:focus:border-finance-primary transition-all"
             />
           </div>

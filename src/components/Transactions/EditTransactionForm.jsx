@@ -75,6 +75,7 @@ export function EditTransactionForm({ initialData, onSubmit, onCancel }) {
           onChange={(e) => setAmount(e.target.value)}
           placeholder="0.00"
           min="0.01"
+          max="9999999"
           step="0.01"
           aria-describedby="edit-amount-description"
           className="p-2 border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-finance-primary/50"
