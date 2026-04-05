@@ -1,6 +1,8 @@
 import React from 'react';
 
 export function StatCard({ label, amount, type = 'primary', icon: Icon }) {
+  const hasDecimals = typeof amount === 'string' && amount.includes('.') && amount.split('.')[1].length > 0;
+  
   const styles = {
     primary: {
       border: 'border-finance-primary/20',
@@ -28,7 +30,7 @@ export function StatCard({ label, amount, type = 'primary', icon: Icon }) {
     <div className={`p-2 lg:p-6 lg:rounded-2xl border ${currentStyle.border} ${currentStyle.bg} flex items-center justify-between`}>
       <div>
         <h3 className="text-sm font-medium text-gray-500 dark:text-gray-300 mb-1">{label}</h3>
-        <p className="lg:text-2xl text-xl font-bold text-gray-900 dark:text-gray-200">{amount}</p>
+        <p className={`lg:text-2xl text-xl font-bold text-gray-900 dark:text-gray-200 ${hasDecimals ? 'lg:text-2xl text-[16px]' : ''}`}>{amount}</p>
       </div>
       {Icon && (
         <div className={`hidden md:block p-3 rounded-xl ${currentStyle.iconBg}`}>
